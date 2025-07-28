@@ -1,0 +1,17 @@
+.social-icons {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.social-icon {
+  font-size: 1.3rem;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.social-icon:hover {
+  color: #4CAF50;
+  transform: scale(1.15);
+} 

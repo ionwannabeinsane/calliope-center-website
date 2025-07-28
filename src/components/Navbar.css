@@ -1,0 +1,118 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #6A0DAD; /* Purple */
+  color: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  position: relative;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  font-size: 1rem;
+}
+
+.navbar-links a, .donate-btn, .glass-btn {
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  border: 1px solid rgba(255,255,255,0.28);
+  backdrop-filter: blur(8px) saturate(180%);
+  -webkit-backdrop-filter: blur(8px) saturate(180%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 24px;
+  font-weight: bold;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  display: inline-block;
+}
+
+.navbar-links a.active, .navbar-links a:hover, .glass-btn:hover {
+  background: rgba(255,255,255,0.32);
+  color: #4CAF50;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.donate-btn {
+  background: linear-gradient(90deg, #6A0DAD 0%, #4CAF50 100%), rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.28);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  backdrop-filter: blur(8px) saturate(180%);
+  -webkit-backdrop-filter: blur(8px) saturate(180%);
+}
+
+.donate-btn:hover {
+  background: linear-gradient(90deg, #4CAF50 0%, #6A0DAD 100%), rgba(255,255,255,0.32);
+  color: #fff;
+  transform: scale(1.07);
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  .navbar-logo {
+    left: 1rem;
+  }
+  .navbar-actions {
+    right: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5rem 0.5rem;
+    height: auto;
+  }
+  .navbar-logo {
+    position: static;
+    transform: none;
+    margin: 0 auto 0.5rem auto;
+    display: flex;
+    justify-content: center;
+  }
+  .navbar-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .navbar-actions {
+    position: static;
+    transform: none;
+    margin: 0 auto 0.5rem auto;
+    justify-content: center;
+  }
+} 
