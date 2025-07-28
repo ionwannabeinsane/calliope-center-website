@@ -15,8 +15,7 @@
   font-weight: bold;
   color: #fff;
   flex-shrink: 0;
-  margin-right: 2rem;
-  width: 120px; /* Fixed width for logo area */
+  width: 120px;
 }
 
 .navbar-links {
@@ -27,23 +26,10 @@
   flex: 1;
   margin: 0;
   padding: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  white-space: nowrap;
-  min-width: 0;
-  max-width: 600px; /* Limit maximum width for better centering */
-  margin: 0 auto; /* Center the navigation links */
-}
-
-.navbar-links::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
 }
 
 .navbar-links li {
   font-size: 1rem;
-  flex-shrink: 0;
 }
 
 .navbar-links a, .donate-btn, .glass-btn {
@@ -60,7 +46,6 @@
   font-size: 1rem;
   transition: background 0.2s, color 0.2s, transform 0.2s;
   display: inline-block;
-  white-space: nowrap;
 }
 
 .navbar-links a.active, .navbar-links a:hover, .glass-btn:hover {
@@ -73,8 +58,7 @@
   align-items: center;
   gap: 1rem;
   flex-shrink: 0;
-  margin-left: 2rem;
-  width: 120px; /* Fixed width for actions area */
+  width: 120px;
   justify-content: flex-end;
 }
 
@@ -98,11 +82,9 @@
     padding: 1rem 1rem;
   }
   .navbar-logo {
-    margin-right: 1rem;
     width: 100px;
   }
   .navbar-actions {
-    margin-left: 1rem;
     width: 100px;
   }
 }
@@ -110,7 +92,6 @@
 @media (max-width: 900px) {
   .navbar-links {
     gap: 1rem;
-    max-width: 500px;
   }
   .navbar-links a, .donate-btn, .glass-btn {
     padding: 0.5rem 1rem;
@@ -137,9 +118,6 @@
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
-    overflow-x: visible;
-    overflow-y: visible;
-    max-width: none;
   }
   .navbar-actions {
     margin: 0 auto 0.5rem auto;
