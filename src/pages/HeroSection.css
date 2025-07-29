@@ -35,11 +35,198 @@
   text-align: left;
 }
 
+/* Coming Soon Newsletter Styles */
+.coming-soon-container {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 2rem 0;
+}
+
+.coming-soon-icon {
+  margin-bottom: 1.5rem;
+  color: #4f46e5;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.coming-soon-title {
+  font-family: 'Manrope', Arial, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.coming-soon-description {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #e5e7eb;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.coming-soon-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 3rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.coming-soon-features li {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1rem;
+  color: #d1d5db;
+  padding: 0.75rem 1rem;
+  background: rgba(79, 70, 229, 0.1);
+  border-radius: 10px;
+  border-left: 3px solid #4f46e5;
+  text-align: left;
+  position: relative;
+}
+
+.coming-soon-features li::before {
+  content: "✨";
+  margin-right: 0.5rem;
+}
+
+.notification-signup {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification-signup h3 {
+  font-family: 'Manrope', Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #f9fafb;
+}
+
+.notification-signup p {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1rem;
+  color: #d1d5db;
+  margin-bottom: 1.5rem;
+}
+
+.notification-form {
+  display: flex;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.email-input {
+  flex: 1;
+  min-width: 250px;
+  padding: 0.75rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f9fafb;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.email-input::placeholder {
+  color: #9ca3af;
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.notify-button {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.notify-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+}
+
+.notify-button:active {
+  transform: translateY(0);
+}
+
+.success-message {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 0.9rem;
+  color: #10b981;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
 @media (max-width: 600px) {
   .hero-section h1 {
     font-size: 1.5rem;
   }
   .hero-subtext {
     font-size: 1rem;
+  }
+  
+  .coming-soon-container {
+    padding: 2rem 1rem;
+  }
+  
+  .coming-soon-title {
+    font-size: 1.8rem;
+  }
+  
+  .coming-soon-description {
+    font-size: 1rem;
+  }
+  
+  .coming-soon-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .notification-form {
+    flex-direction: column;
+  }
+  
+  .email-input {
+    min-width: auto;
   }
 } 
