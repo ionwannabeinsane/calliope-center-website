@@ -1,7 +1,6 @@
 import React from 'react';
 import './HeroSection.css';
 import medicalCareImg from '../assets/medical-care.jpg';
-import medicalTeamImg from '../assets/medical-team.jpg';
 import patientConsultationImg from '../assets/patient-consultation.jpg';
 
 const services = [
@@ -38,8 +37,8 @@ const services = [
   {
     title: 'Transition support from adolescence to adulthood',
     description: 'Guidance and resources to help young people and their families navigate the transition to adult care and independent living.',
-    image: medicalTeamImg,
-    imageAlt: 'Medical team collaborating on patient care'
+    image: null,
+    imageAlt: null
   }
 ];
 
