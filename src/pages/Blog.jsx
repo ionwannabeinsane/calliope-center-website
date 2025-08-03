@@ -316,30 +316,14 @@ const Blog = () => {
           <div style={contentCardStyle}>
             <FaPenFancy style={iconStyle} />
             <h2 style={{ color: '#6A0DAD', marginBottom: '1rem' }}>
-              {searchTerm ? 'No posts found' : 'No posts yet'}
+              {searchTerm ? 'No posts found' : ''}
             </h2>
             <p style={{ lineHeight: '1.6', marginBottom: '2rem', fontSize: '1.1rem' }}>
               {searchTerm 
                 ? `No posts match your search for "${searchTerm}". Try a different search term.`
-                : 'Be the first to share your story! Click "Share Your Story" to get started.'
+                : ''
               }
             </p>
-            {!searchTerm && (
-              <button
-                onClick={() => setShowForm(true)}
-                style={{
-                  background: '#6A0DAD',
-                  color: 'white',
-                  border: 'none',
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '8px',
-                  cursor: 'pointer',
-                  fontSize: '1rem'
-                }}
-              >
-                Share Your Story
-              </button>
-            )}
           </div>
         )}
       </div>
