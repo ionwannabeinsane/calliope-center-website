@@ -28,6 +28,12 @@ export const blogService = {
       posts.unshift(newPost);
       
       localStorage.setItem(BLOG_POSTS_KEY, JSON.stringify(posts));
+      
+      // Track user's posts
+      const userPosts = JSON.parse(localStorage.getItem('calliope_user_posts') || '[]');
+      userPosts.push(newPost.id);
+      localStorage.setItem('calliope_user_posts', JSON.stringify(userPosts));
+      
       return newPost;
     } catch (error) {
       console.error('Error adding blog post:', error);
@@ -60,6 +66,17 @@ export const blogService = {
       const posts = blogService.getAllPosts();
       const filteredPosts = posts.filter(post => post.id !== postId);
       localStorage.setItem(BLOG_POSTS_KEY, JSON.stringify(filteredPosts));
+      
+      // Remove from user's posts
+      const userPosts = JSON.parse(localStorage.getItem('calliope_user_posts') || '[]');
+      const updatedUserPosts = userPosts.filter(id => id !== postId);
+      localStorage.setItem('calliope_user_posts', JSON.stringify(updatedUserPosts));
+      
+      // Remove from liked posts
+      const likedPosts = JSON.parse(localStorage.getItem('calliope_liked_posts') || '[]');
+      const updatedLikedPosts = likedPosts.filter(id => id !== postId);
+      localStorage.setItem('calliope_liked_posts', JSON.stringify(updatedLikedPosts));
+      
       return true;
     } catch (error) {
       console.error('Error deleting blog post:', error);

@@ -31,6 +31,7 @@ const Blog = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [showAllPosts, setShowAllPosts] = useState(false);
+  const [editingPost, setEditingPost] = useState(null);
 
   useEffect(() => {
     loadPosts();
@@ -59,7 +60,14 @@ const Blog = () => {
 
   const handleSubmitPost = (postData) => {
     try {
-      blogService.addPost(postData);
+      if (editingPost) {
+        // Update existing post
+        blogService.updatePost(postData.id, postData);
+        setEditingPost(null);
+      } else {
+        // Create new post
+        blogService.addPost(postData);
+      }
       loadPosts();
       setShowForm(false);
     } catch (error) {
@@ -99,6 +107,21 @@ const Blog = () => {
         console.error('Error adding comment:', error);
         alert('Failed to add comment. Please try again.');
       }
+    }
+  };
+
+  const handleEditPost = (post) => {
+    setEditingPost(post);
+    setShowForm(true);
+  };
+
+  const handleDeletePost = (postId) => {
+    try {
+      blogService.deletePost(postId);
+      loadPosts();
+    } catch (error) {
+      console.error('Error deleting post:', error);
+      alert('Failed to delete post. Please try again.');
     }
   };
 
@@ -183,7 +206,11 @@ const Blog = () => {
           <div style={{ marginBottom: '2rem' }}>
             <BlogPostForm
               onSubmit={handleSubmitPost}
-              onCancel={() => setShowForm(false)}
+              onCancel={() => {
+                setShowForm(false);
+                setEditingPost(null);
+              }}
+              editPost={editingPost}
             />
           </div>
         )}
@@ -198,6 +225,8 @@ const Blog = () => {
               icon={<FaClock />}
               onLike={handleLikePost}
               onComment={handleCommentPost}
+              onEdit={handleEditPost}
+              onDelete={handleDeletePost}
               maxPosts={3}
             />
 
@@ -208,6 +237,8 @@ const Blog = () => {
               icon={<FaFire />}
               onLike={handleLikePost}
               onComment={handleCommentPost}
+              onEdit={handleEditPost}
+              onDelete={handleDeletePost}
               maxPosts={3}
             />
 
@@ -276,6 +307,8 @@ const Blog = () => {
                 post={post}
                 onLike={handleLikePost}
                 onComment={handleCommentPost}
+                onEdit={handleEditPost}
+                onDelete={handleDeletePost}
               />
             ))}
           </div>

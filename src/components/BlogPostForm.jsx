@@ -3,13 +3,13 @@ import { useDropzone } from 'react-dropzone';
 import { FaUpload, FaTimes, FaEye, FaEyeSlash } from 'react-icons/fa';
 import './BlogPostForm.css';
 
-const BlogPostForm = ({ onSubmit, onCancel }) => {
+const BlogPostForm = ({ onSubmit, onCancel, editPost = null }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    title: '',
-    content: '',
+    name: editPost?.name || '',
+    title: editPost?.title || '',
+    content: editPost?.content || '',
     image: null,
-    showName: false
+    showName: editPost?.showName || false
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -118,25 +118,27 @@ const BlogPostForm = ({ onSubmit, onCancel }) => {
       }
 
       const postData = {
-        id: Date.now().toString(),
+        id: editPost ? editPost.id : Date.now().toString(),
         title: formData.title.trim(),
         content: formData.content.trim(),
         name: formData.showName ? formData.name.trim() : 'Anonymous',
-        image: imageData,
-        timestamp: new Date().toISOString(),
+        image: imageData || editPost?.image,
+        timestamp: editPost ? editPost.timestamp : new Date().toISOString(),
         showName: formData.showName
       };
 
       onSubmit(postData);
       
-      // Reset form
-      setFormData({
-        name: '',
-        title: '',
-        content: '',
-        image: null,
-        showName: false
-      });
+      // Reset form only if not editing
+      if (!editPost) {
+        setFormData({
+          name: '',
+          title: '',
+          content: '',
+          image: null,
+          showName: false
+        });
+      }
     } catch (error) {
       console.error('Error creating post:', error);
       setErrors({ submit: 'Failed to create post. Please try again.' });
@@ -152,7 +154,7 @@ const BlogPostForm = ({ onSubmit, onCancel }) => {
 
   return (
     <div className="blog-post-form">
-      <h2>Share Your Story</h2>
+      <h2>{editPost ? 'Edit Your Story' : 'Share Your Story'}</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>
@@ -260,7 +262,7 @@ const BlogPostForm = ({ onSubmit, onCancel }) => {
             className="btn-primary"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Posting...' : 'Post Story'}
+            {isSubmitting ? (editPost ? 'Updating...' : 'Posting...') : (editPost ? 'Update Story' : 'Post Story')}
           </button>
         </div>
       </form>

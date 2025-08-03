@@ -1,8 +1,11 @@
-import React from 'react';
-import { FaUser, FaCalendar, FaHeart, FaComment } from 'react-icons/fa';
+import React, { useState, useEffect, useRef } from 'react';
+import { FaUser, FaCalendar, FaHeart, FaComment, FaEllipsisH, FaEdit, FaTrash } from 'react-icons/fa';
 import './BlogPost.css';
 
-const BlogPost = ({ post, onLike, onComment, showLikeCount = true }) => {
+const BlogPost = ({ post, onLike, onComment, onEdit, onDelete, showLikeCount = true }) => {
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef(null);
+  
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
@@ -13,6 +16,42 @@ const BlogPost = ({ post, onLike, onComment, showLikeCount = true }) => {
       minute: '2-digit'
     });
   };
+
+  const handleEdit = () => {
+    setShowMenu(false);
+    onEdit && onEdit(post);
+  };
+
+  const handleDelete = () => {
+    if (window.confirm('Are you sure you want to delete this post? This action cannot be undone.')) {
+      setShowMenu(false);
+      onDelete && onDelete(post.id);
+    }
+  };
+
+  const isOwnPost = () => {
+    // Check if this post was created by the current user
+    // For now, we'll use a simple localStorage check
+    const userPosts = JSON.parse(localStorage.getItem('calliope_user_posts') || '[]');
+    return userPosts.includes(post.id);
+  };
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowMenu(false);
+      }
+    };
+
+    if (showMenu) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showMenu]);
 
   return (
     <article className="blog-post">
@@ -76,6 +115,31 @@ const BlogPost = ({ post, onLike, onComment, showLikeCount = true }) => {
             <span>{post.comments ? post.comments.length : 0} Comments</span>
           </button>
         </div>
+        
+        {/* Edit/Delete Menu for Own Posts */}
+        {isOwnPost() && (
+          <div className="post-menu" ref={menuRef}>
+            <button 
+              className="menu-toggle"
+              onClick={() => setShowMenu(!showMenu)}
+            >
+              <FaEllipsisH />
+            </button>
+            
+            {showMenu && (
+              <div className="menu-dropdown">
+                <button className="menu-item" onClick={handleEdit}>
+                  <FaEdit />
+                  <span>Edit Post</span>
+                </button>
+                <button className="menu-item delete" onClick={handleDelete}>
+                  <FaTrash />
+                  <span>Delete Post</span>
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </article>
   );

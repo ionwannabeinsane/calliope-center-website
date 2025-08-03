@@ -3,7 +3,7 @@ import { FaFire, FaClock } from 'react-icons/fa';
 import BlogPost from './BlogPost';
 import './BlogSection.css';
 
-const BlogSection = ({ title, posts, icon, onLike, onComment, maxPosts = 3 }) => {
+const BlogSection = ({ title, posts, icon, onLike, onComment, onEdit, onDelete, maxPosts = 3 }) => {
   if (!posts || posts.length === 0) {
     return null;
   }
@@ -23,6 +23,8 @@ const BlogSection = ({ title, posts, icon, onLike, onComment, maxPosts = 3 }) =>
             post={post}
             onLike={onLike}
             onComment={onComment}
+            onEdit={onEdit}
+            onDelete={onDelete}
             showLikeCount={true}
           />
         ))}
