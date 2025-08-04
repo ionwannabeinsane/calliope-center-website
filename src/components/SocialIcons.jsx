@@ -3,8 +3,8 @@ import { FaInstagram, FaXTwitter, FaTiktok, FaFacebook } from 'react-icons/fa6';
 import './SocialIcons.css';
 
 const icons = [
-  { name: 'Instagram', href: '#', icon: <FaInstagram /> },
-  { name: 'X', href: '#', icon: <FaXTwitter /> },
+  { name: 'Instagram', href: 'https://www.instagram.com/calliopecenter/', icon: <FaInstagram /> },
+  { name: 'X', href: 'https://x.com/CalliopeCenter', icon: <FaXTwitter /> },
   { name: 'TikTok', href: '#', icon: <FaTiktok /> },
   { name: 'Facebook', href: '#', icon: <FaFacebook /> },
 ];
