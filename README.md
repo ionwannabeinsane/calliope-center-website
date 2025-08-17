@@ -1,12 +1,16 @@
-# React + Vite
+# Calliope Center for Rare Disease Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the official website for the Calliope Center for Rare Disease, a nonprofit dedicated to supporting children with rare diseases and their families. Our mission is to combine cutting-edge research, personalized treatment, and family-focused support services in one place of hope and healing.
 
-Currently, two official plugins are available:
+About the Project
+-------------------
+The website is designed to: Share our mission and story.
+- Provide information on research, clinical trials, and treatment programs.
+- Connect families with support services (counseling, financial aid, daycare).
+- Highlight ways to get involved (donations, volunteering, partnerships).
+- Serve as a hub for advocacy and awareness.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Tech Stack
+-------------------
+- Frontend: HTML, CSS, JavaScript
+- Styling: Tailwind CSS (with custom green #00bf63 and purple #8c52ff branding)
