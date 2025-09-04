@@ -13,4 +13,4 @@ The website is designed to: Share our mission and story.
 Tech Stack
 -------------------
 - Frontend: HTML, CSS, JavaScript
-- Styling: Tailwind CSS (with custom green #00bf63 and purple #8c52ff branding)
+- Styling: Tailwind CSS (with green #00bf63 and purple #8c52ff branding)
